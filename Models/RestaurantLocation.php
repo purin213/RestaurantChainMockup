@@ -46,7 +46,7 @@ class RestaurantLocation implements FileConvertible
         );
     }
 
-    public function toHTML()
+    public function toHTML(): string
     {
         return sprintf("
             <div class='restaurant-location-card'>
@@ -72,7 +72,7 @@ class RestaurantLocation implements FileConvertible
         );
     }
 
-    public function toMarkdown()
+    public function toMarkdown(): string
     {
         $stringedEmployees = implode(' ', $this->employees);
         return "## Name: {$this->name}
@@ -86,7 +86,7 @@ class RestaurantLocation implements FileConvertible
                  ";
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return [
             "Name" => $this->name,

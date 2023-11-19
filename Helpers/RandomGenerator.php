@@ -1,6 +1,8 @@
 <?php
+
 namespace Helpers;
 use Faker\Factory;
+use Models\User;
 
 class RandomGenerator {
     public static function user(): User {

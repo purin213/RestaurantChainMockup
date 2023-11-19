@@ -3,6 +3,7 @@
 namespace Models;
 
 use Interfaces\FileConvertible;
+use DateTime;
 
 class User implements FileConvertible {
     private int $id;
@@ -17,9 +18,9 @@ class User implements FileConvertible {
     private string $role;
 
     public function __construct(
-        int $id, string $firstName, string $lastName, string $email, 
-        string $password, string $phoneNumber, string $address, 
-        DateTime $birthDate, DateTime $membershipExpirationDate, string $role, bool $isActive
+        int $id, string $firstName, string $lastName, string $email,
+        string $password, string $phoneNumber, string $address,
+        DateTime $birthDate, DateTime $membershipExpirationDate, string $role
     ) {
         $this->id = $id;
         $this->firstName = $firstName;
@@ -31,7 +32,6 @@ class User implements FileConvertible {
         $this->birthDate = $birthDate;
         $this->membershipExpirationDate = $membershipExpirationDate;
         $this->role = $role;
-        $this->isActive = $isActive;
     }
 
     public function login(string $password): bool {
@@ -70,7 +70,7 @@ class User implements FileConvertible {
         );
     }
 
-    public function toHTML() {
+    public function toHTML(): string {
         return sprintf("
             <div class='user-card'>
                 <div class='avatar'>SAMPLE</div>
@@ -93,17 +93,16 @@ class User implements FileConvertible {
         );
     }
 
-    public function toMarkdown() {
+    public function toMarkdown(): string {
         return "## User: {$this->firstName} {$this->lastName}
                  - Email: {$this->email}
                  - Phone Number: {$this->phoneNumber}
                  - Address: {$this->address}
                  - Birth Date: {$this->birthDate->format('Y-m-d')}
-                 - Is Active: {$this->isActive}
                  - Role: {$this->role}";
     }
 
-    public function toArray() {
+    public function toArray(): array{
         return [
             'id' => $this->id,
             'firstName' => $this->firstName,
@@ -113,7 +112,6 @@ class User implements FileConvertible {
             'phoneNumber' => $this->phoneNumber,
             'address' => $this->address,
             'birthDate' => $this->birthDate->format('Y-m-d'),
-            'isActive' => $this->isActive,
             'role' => $this->role
         ];
     }

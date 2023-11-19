@@ -50,7 +50,7 @@ class Company implements FileConvertible
         );
     }
 
-    public function toHTML()
+    public function toHTML(): string
     {
         return sprintf("
             <div class='company-card'>
@@ -82,7 +82,7 @@ class Company implements FileConvertible
         );
     }
 
-    public function toMarkdown()
+    public function toMarkdown(): string
     {
         return "## User: {$this->name}
                  - Founding Year: {$this->foundingYear}
@@ -97,7 +97,7 @@ class Company implements FileConvertible
                  - Total Employees: {$this->totalEmployees}";
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'name' => $this->name,
