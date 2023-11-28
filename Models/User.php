@@ -4,8 +4,11 @@ namespace Models;
 
 use Interfaces\FileConvertible;
 use DateTime;
+use Traits\GetterTrait;
 
 class User implements FileConvertible {
+    use GetterTrait;
+
     private int $id;
     private string $firstName;
     private string $lastName;

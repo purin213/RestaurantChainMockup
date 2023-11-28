@@ -1,5 +1,5 @@
 <?php
-namespace Traits\GetterTrait;
+namespace Traits;
 
 use BadFunctionCallException;
 

@@ -3,9 +3,12 @@
 namespace Models;
 
 use Interfaces\FileConvertible;
+use Traits\GetterTrait;
 
 class Company implements FileConvertible
 {
+    use GetterTrait;
+
     private string $name;
     private int $foundingYear;
     private string $description;

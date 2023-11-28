@@ -1,5 +1,6 @@
 <?php
 namespace Models;
+
 use DateTime;
 
 class Employee extends User {
@@ -8,8 +9,15 @@ class Employee extends User {
     private DateTime $startDate;
     private array $awards;
 
-    public function __construct(int $id, string $firstName, string $lastName, string $email, string $password, string $phoneNumber, string $address, DateTime $birthDate, DateTime $membershipExpirationDate, string $role, bool $isActive, string $jobTitle, float $salary, DateTime $startDate, array $awards){
-        parent::__construct($id, $firstName, $lastName, $email, $password, $phoneNumber, $address, $birthDate, $membershipExpirationDate, $role, $isActive);
+    public function __construct(
+            int $id, string $firstName, string $lastName, string $email, string $password,
+            string $phoneNumber, string $address, DateTime $birthDate,
+            DateTime $membershipExpirationDate, string $role, bool $isActive,
+            string $jobTitle, float $salary, DateTime $startDate, array $awards
+        ){
+        parent::__construct($id, $firstName, $lastName, $email, $password, $phoneNumber,
+             $address, $birthDate, $membershipExpirationDate, $role, $isActive
+        );
         $this->jobTitle = $jobTitle;
         $this->salary = $salary;
         $this->startDate = $startDate;

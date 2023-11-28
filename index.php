@@ -31,17 +31,10 @@ $users = RandomGenerator::users($min, $max);
 </head>
 <body>
     <h1>Restaurant Profiles</h1>
-
         <?php foreach ($users as $user): ?>
-        <div class="card">
-            <h2><h2/>
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div>
+                <?php echo $user->toHTML(); ?>
             </div>
-        </div>
         <?php endforeach; ?>
-
 </body>
 </html>
