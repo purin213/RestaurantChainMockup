@@ -8,8 +8,8 @@ use Helpers\RandomGenerator;
 require_once 'vendor/autoload.php';
 
 // クエリ文字列からパラメータを取得
-$min = $_GET['min'] ?? 5;
-$max = $_GET['max'] ?? 20;
+$min = $_GET['min'] ?? 2;
+$max = $_GET['max'] ?? 10;
 
 // パラメータが整数であることを確認
 $min = (int)$min;
@@ -17,6 +17,8 @@ $max = (int)$max;
 
 // ユーザーの生成
 $users = RandomGenerator::users($min, $max);
+$employees = RandomGenerator::employees($min, $max);
+sprintf("Length of %s", count($users));
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +33,11 @@ $users = RandomGenerator::users($min, $max);
 </head>
 <body>
     <h1>Restaurant Profiles</h1>
-        <?php foreach ($users as $user): ?>
+        <?php for ($i = 0; $i < count($users); $i++): ?>
             <div>
-                <?php echo $user->toHTML(); ?>
+                <?php echo $users[$i]->toHTML(); ?>
+                # FIX ME -> @emyloyee.php <?php echo $employees[$i]->toHTML(); ?>
             </div>
-        <?php endforeach; ?>
+        <?php endfor; ?>
 </body>
 </html>

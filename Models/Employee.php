@@ -3,6 +3,8 @@ namespace Models;
 
 use DateTime;
 
+# FIX ME
+# need override method (toHTML)
 class Employee extends User {
     private string $jobTitle;
     private float $salary;

@@ -39,7 +39,7 @@ class RandomGenerator {
             $faker->randomElement(['manager', 'valet', 'cashier', 'chef']),
             $faker->numberBetween(1000, 5000),
             $faker->dateTimeThisCentury,
-            $faker->randomElement(['employee of the month', 'best customer service']),
+            [$faker->randomElement(['employee of the month', 'best customer service'])],
         );
     }
 
