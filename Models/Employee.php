@@ -12,11 +12,11 @@ class Employee extends User {
     public function __construct(
             int $id, string $firstName, string $lastName, string $email, string $password,
             string $phoneNumber, string $address, DateTime $birthDate,
-            DateTime $membershipExpirationDate, string $role, bool $isActive,
+            DateTime $membershipExpirationDate, string $role,
             string $jobTitle, float $salary, DateTime $startDate, array $awards
         ){
         parent::__construct($id, $firstName, $lastName, $email, $password, $phoneNumber,
-             $address, $birthDate, $membershipExpirationDate, $role, $isActive
+             $address, $birthDate, $membershipExpirationDate, $role
         );
         $this->jobTitle = $jobTitle;
         $this->salary = $salary;

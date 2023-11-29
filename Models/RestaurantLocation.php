@@ -5,10 +5,12 @@ namespace Models;
 require_once 'Traits/GetterTrait.php';
 
 use Interfaces\FileConvertible;
-use Traits\GetterTrait\GetterTrait;
+use Traits\GetterTrait;
 
 class RestaurantLocation implements FileConvertible
 {
+    use GetterTrait;
+
     private string $name;
     private string $address;
     private string $city;
@@ -17,8 +19,6 @@ class RestaurantLocation implements FileConvertible
     private array $employees;
     private bool $isOpen;
     private bool $hasDriveThru;
-
-    use GetterTrait;
 
     public function __construct(string $name, string $address, string $city, string $state, string $zipCode, array $employees, bool $isOpen, bool $hasDriveThru)
     {
