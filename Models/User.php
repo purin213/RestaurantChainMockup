@@ -9,16 +9,16 @@ use Traits\GetterTrait;
 class User implements FileConvertible {
     use GetterTrait;
 
-    private int $id;
-    private string $firstName;
-    private string $lastName;
-    private string $email;
-    private string $hashedPassword;
-    private string $phoneNumber;
-    private string $address;
-    private DateTime $birthDate;
-    private DateTime $membershipExpirationDate;
-    private string $role;
+    protected int $id;
+    protected string $firstName;
+    protected string $lastName;
+    protected string $email;
+    protected string $hashedPassword;
+    protected string $phoneNumber;
+    protected string $address;
+    protected DateTime $birthDate;
+    protected DateTime $membershipExpirationDate;
+    protected string $role;
 
     public function __construct(
         int $id, string $firstName, string $lastName, string $email,
@@ -29,7 +29,7 @@ class User implements FileConvertible {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
-        $this->hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $this->hashedPassword = $password;
         $this->phoneNumber = $phoneNumber;
         $this->address = $address;
         $this->birthDate = $birthDate;

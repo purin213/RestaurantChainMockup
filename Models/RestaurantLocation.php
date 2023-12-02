@@ -2,8 +2,6 @@
 
 namespace Models;
 
-require_once 'Traits/GetterTrait.php';
-
 use Interfaces\FileConvertible;
 use Traits\GetterTrait;
 
@@ -20,7 +18,7 @@ class RestaurantLocation implements FileConvertible
     private bool $isOpen;
     private bool $hasDriveThru;
 
-    public function __construct(string $name, string $address, 
+    public function __construct(string $name, string $address,
         string $city, string $state, string $zipCode, array $employees,
         bool $isOpen, bool $hasDriveThru
     ){
@@ -45,11 +43,11 @@ class RestaurantLocation implements FileConvertible
             <div class='accordion mx-4' id='accordionPanelsStayOpenExample'>
                 <div class='accordion-item'>
                     <h2 class='accordion-header'>
-                        <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseOne' aria-expanded='true' aria-controls='panelsStayOpen-collapseOne'>
+                        <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-%s' aria-expanded='false' aria-controls='panelsStayOpen-%s'>
                             %s
                         </button>
                     </h2>
-                    <div id='panelsStayOpen-collapseOne' class='accordion-collapse collapse show'>
+                    <div id='panelsStayOpen-%s' class='accordion-collapse collapse'>
                         <div class='accordion-body'>
                             <h2>Employees</h2>
                             <table class='table'>
@@ -70,7 +68,10 @@ class RestaurantLocation implements FileConvertible
                 </div>
             </div>
             ",
+            $this->zipCode,
+            $this->zipCode,
             $this->name,
+            $this->zipCode,
             $employeeList
         );
     }

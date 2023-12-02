@@ -4,6 +4,7 @@ namespace Models;
 use DateTime;
 
 class Employee extends User {
+
     private string $jobTitle;
     private float $salary;
     private DateTime $startDate;
@@ -37,7 +38,7 @@ class Employee extends User {
             $this->jobTitle,
             $this->firstName,
             $this->lastName,
-            $this->startDate
+            $this->startDate->format('Y-m-d H:i:s'),
         );
     }
     /*
@@ -45,7 +46,7 @@ class Employee extends User {
     public function toString(): string{
         return sprintf(
             "ID: %s, Title: %s, Name: %s %s, Join Date: %s",
-            $this->id, $this->jobTitle, $this->firstName, $this->lastName, $this->startDate 
+            $this->id, $this->jobTitle, $this->firstName, $this->lastName, $this->startDate
         );
     }
     public function toArray(): array{
