@@ -25,4 +25,22 @@ class RestaurantChain extends Company
         $this->numberOfLocations = $numberOfLocations;
         $this->parentCompany = $parentCompany;
     }
+    public function toHTML(): string
+    {
+        $locationList = "";
+        foreach($this->restaurantLocation as $restaurantLocation){
+                $locationList .= $restaurantLocation->toHTML();
+        }
+
+        return sprintf("
+            <div class='d-flex justify-content-center p-2 m-2'>
+                <h1>%s</h1>
+            </div>
+            %s
+        ",
+            $this->parentCompany,
+            $locationList
+        );
+    }
+
 }

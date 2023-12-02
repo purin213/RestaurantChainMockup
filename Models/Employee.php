@@ -3,8 +3,6 @@ namespace Models;
 
 use DateTime;
 
-# FIX ME
-# need override method (toHTML)
 class Employee extends User {
     private string $jobTitle;
     private float $salary;
@@ -25,4 +23,43 @@ class Employee extends User {
         $this->startDate = $startDate;
         $this->awards = $awards;
     }
+
+    public function toHTML(): string
+    {
+        return sprintf("
+            <tr>
+                <th scope='row'>%s</th>
+                <td>%s</td>
+                <td>%s %s</td>
+                <td>%s</td>
+            </tr>",
+            $this->id,
+            $this->jobTitle,
+            $this->firstName,
+            $this->lastName,
+            $this->startDate
+        );
+    }
+    /*
+
+    public function toString(): string{
+        return sprintf(
+            "ID: %s, Title: %s, Name: %s %s, Join Date: %s",
+            $this->id, $this->jobTitle, $this->firstName, $this->lastName, $this->startDate 
+        );
+    }
+    public function toArray(): array{
+        return [
+            'id' => $this->id,
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'email' => $this->email,
+            'hashedPassword' => $this->hashedPassword,
+            'phoneNumber' => $this->phoneNumber,
+            'address' => $this->address,
+            'birthDate' => $this->birthDate->format('Y-m-d'),
+            'role' => $this->role
+        ];
+    }
+    */
 }

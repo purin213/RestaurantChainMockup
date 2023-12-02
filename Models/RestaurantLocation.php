@@ -20,8 +20,10 @@ class RestaurantLocation implements FileConvertible
     private bool $isOpen;
     private bool $hasDriveThru;
 
-    public function __construct(string $name, string $address, string $city, string $state, string $zipCode, array $employees, bool $isOpen, bool $hasDriveThru)
-    {
+    public function __construct(string $name, string $address, 
+        string $city, string $state, string $zipCode, array $employees,
+        bool $isOpen, bool $hasDriveThru
+    ){
             $this->name = $name;
             $this->address = $address;
             $this->city = $city;
@@ -31,36 +33,52 @@ class RestaurantLocation implements FileConvertible
             $this->isOpen = $isOpen;
             $this->hasDriveThru = $hasDriveThru;
     }
+
+    public function toHTML(): string
+    {
+        $employeeList = "";
+        foreach($this->employees as $employee){
+                $employeeList .= $employee->toHTML();
+        }
+
+        return sprintf("
+            <div class='accordion mx-4' id='accordionPanelsStayOpenExample'>
+                <div class='accordion-item'>
+                    <h2 class='accordion-header'>
+                        <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseOne' aria-expanded='true' aria-controls='panelsStayOpen-collapseOne'>
+                            %s
+                        </button>
+                    </h2>
+                    <div id='panelsStayOpen-collapseOne' class='accordion-collapse collapse show'>
+                        <div class='accordion-body'>
+                            <h2>Employees</h2>
+                            <table class='table'>
+                                <thead>
+                                    <tr>
+                                        <th scope='col'>ID</th>
+                                        <th scope='col'>Title</th>
+                                        <th scope='col'>Name</th>
+                                        <th scope='col'>Join Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    %s
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ",
+            $this->name,
+            $employeeList
+        );
+    }
+
     public function toString(): string
     {
         return sprintf(
             "Name: %s\nAddress: %s\nCity: %s\nState: %s\nZip Code: %s\nEmployees: %s\nIs Open: %s\nHas Drive through: %s\n",
-            $this->name,
-            $this->address,
-            $this->city,
-            $this->state,
-            $this->zipCode,
-            $this->employees,
-            $this->isOpen,
-            $this->hasDriveThru,
-        );
-    }
-
-    public function toHTML(): string
-    {
-        return sprintf("
-            <div class='restaurant-location-card'>
-                <div class='avatar'>SAMPLE</div>
-                <h2>%s , since %s</h2>
-                <p>%s</p>
-                <p>%s</p>
-                <p>%s</p>
-                <p>%s</p>
-                <p>%s</p>
-                <p>%s</p>
-                <p>%s</p>
-                <p>%s</p>
-            </div>",
             $this->name,
             $this->address,
             $this->city,
