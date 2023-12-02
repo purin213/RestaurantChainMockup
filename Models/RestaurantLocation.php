@@ -9,14 +9,14 @@ class RestaurantLocation implements FileConvertible
 {
     use GetterTrait;
 
-    private string $name;
-    private string $address;
-    private string $city;
-    private string $state;
-    private string $zipCode;
-    private array $employees;
-    private bool $isOpen;
-    private bool $hasDriveThru;
+    protected string $name;
+    protected string $address;
+    protected string $city;
+    protected string $state;
+    protected string $zipCode;
+    protected array $employees;
+    protected bool $isOpen;
+    protected bool $hasDriveThru;
 
     public function __construct(string $name, string $address,
         string $city, string $state, string $zipCode, array $employees,

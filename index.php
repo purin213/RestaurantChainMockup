@@ -16,7 +16,7 @@ $min = (int)$min;
 $max = (int)$max;
 
 // ユーザーの生成
-$restaurantLocations = RandomGenerator::restaurantLocations();
+$restaurantChains = RandomGenerator::restaurantChains();
 ?>
 
 <!DOCTYPE html>
@@ -32,9 +32,9 @@ $restaurantLocations = RandomGenerator::restaurantLocations();
 </head>
 <body class="p-5">
     <h1>Restaurant Profiles</h1>
-        <?php foreach($restaurantLocations as $restaurantLocation): ?>
+        <?php foreach($restaurantChains as $restaurantChain): ?>
             <div>
-                <?php echo $restaurantLocation->toHTML(); ?>
+                <?php echo $restaurantChain->toHTML(); ?>
             </div>
         <?php endforeach; ?>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

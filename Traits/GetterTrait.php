@@ -4,7 +4,7 @@ namespace Traits;
 use BadFunctionCallException;
 
 trait GetterTrait {
-    public function getClassVariable(callable $variableName): mixed{
+    public function getClassVariable(string $variableName): mixed{
         try{
             if (!isset($this->$variableName)) {
                 throw new BadFunctionCallException("Class variable {$variableName} does not exist.");

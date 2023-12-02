@@ -98,7 +98,7 @@ class RandomGenerator {
 
         $faker = Factory::create();
         $restaurantLocations = [];
-        $randNum = $faker->numberBetween(5, 50);
+        $randNum = $faker->numberBetween(3, 12);
 
         for ($i = 0; $i < $randNum; $i++) {
             $restaurantLocations[] = self::restaurantLocation();
@@ -114,7 +114,7 @@ class RandomGenerator {
 
         $totalEmployeeCount = 0;
         foreach ($restaurantLocation as $restaurantLocationI){
-            $totalEmployeeCount += count($restaurantLocationI->employees);
+            $totalEmployeeCount += count($restaurantLocationI->getClassVariable("employees"));
         }
 
         return new RestaurantChain(
@@ -130,7 +130,7 @@ class RandomGenerator {
             $faker->name(),
             $totalEmployeeCount,
             $faker->numberBetween(1000, 5000),
-            self::restaurantLocations(),
+            $restaurantLocation,
             $faker->randomElement(['fast food', 'italian', 'mexican', 'bolivian']),
             count($restaurantLocation),
             $faker->company(),
@@ -141,7 +141,7 @@ class RandomGenerator {
 
         $faker = Factory::create();
         $restaurantChains = [];
-        $randNum = $faker->numberBetween(5, 500);
+        $randNum = $faker->numberBetween(5, 20);
         for ($i = 0; $i < $randNum; $i++) {
             $restaurantChains[] = self::restaurantChain();
         }
